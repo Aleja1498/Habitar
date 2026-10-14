@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitación Interactiva - Tres Autoras</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Lora&family=Courier+Prime&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Habitación  -->
+    <div id="room">
+        <!-- Superficies  habitación -->
+        <div class="wall wall-front" style="background-image: url('assets/pared-frontal.png');"></div>
+        <div class="wall wall-left" style="background-image: url('assets/pared-lateral.png');"></div>
+        <div class="wall wall-right" style="background-image: url('assets/puerta.png');"></div>
+        <div class="floor" style="background-image: url('assets/suelo.png');"></div>
+        <div class="ceiling" style="background-image: url('assets/techo.png');"></div>
+        
+        <!-- Zonas interactivas -->
+        <div class="zone zone-bed" data-author="woolf"></div>
+        <div class="zone zone-window" data-author="storni">
+            <div class="landscape" style="background-image: url('assets/paisaje.png');"></div>
+        </div>
+        <div class="zone zone-door" data-author="gilman"></div>
+    </div>
+    
+    <!--  lectura -->
+    <div id="modal" class="modal hidden">
+        <button class="close-btn">×</button>
+        <article id="text-content"></article>
+    </div>
+    
+    <!-- TEXTOS  -->
+    <template id="text-woolf">
+        <h1>Sobre estar enferma</h1>
+        <p class="author">Virginia Woolf (1926)</p>
+        <hr>
+        <p>Considerando cuán común es la enfermedad, cuán tremenda es la alteración espiritual que conlleva, con cuánto asombro, entonces, cuando las luces de la salud decaen, se revelan ignotos países, qué descampados páramos y desiertos del alma un grácil ataque de influenza trae a la luz...</p>
+        <p>Novelas, se diría, podrían estar dedicadas a la influenza; poemas épicos, a la fiebre tifoidea; odas, a la neumonía; obras líricas, al dolor de muelas. Mas no. Salvo pocas excepciones, la literatura hace todo cuanto le es posible para sostener que lo que le concierne es el pensamiento; que el cuerpo no es más que una lámina de liso cristal a través del cual el alma mira directa y claramente...</p>
+        <p>Todo el día y la noche entera, el cuerpo interviene; se despunta o se afila, se colorea o decolora, se convierte en cera durante la canícula de junio, se fragua hasta convertirse en sebo en la lobreguez de febrero.</p>
+        <p>Pero volvamos al enfermo. «Estoy en cama con gripe», dice, y en realidad se queja de que no recibe conmiseración... pero qué nos dice esto de la gran experiencia; de cómo el mundo ha cambiado de forma; de cómo las herramientas de los negocios se han vuelto remotas...</p>
+        <p>Hay, confesémoslo (y la enfermedad es el gran confesionario) una franqueza infantil en la enfermedad; se dicen cosas, se sueltan verdades que la cautelosa respetabilidad de la salud oculta...</p>
+        <p>En cuanto guardar cama aparece como una exigencia, dejamos de ser soldados en el ejército de los rectos; nos convertimos en desertores. Ellos marchan a la batalla. Nosotros flotamos con ramas en el arroyo...</p>
+        <p>Solo quienes yacen recostados saben lo que, después de todo, la naturaleza no se esfuerza en ocultar –y que finalmente vencerá; el calor abandonará el mundo; rígidos por la escarcha dejaremos de arrastrar los pies por los campos...</p>
+        <p>La enfermedad nos hace reacios a las largas campañas que exige la prosa... con la responsabilidad archivada y la razón en suspenso, se imponen otros gustos, repentinos, inconstantes, intensos...</p>
+        <p>En la enfermedad, las palabras parecen poseer una cualidad mística. Captamos lo que está más allá de su significado superficial...</p>
+    </template>
+
+    <template id="text-gilman">
+        <h1>El papel pintado amarillo</h1>
+        <p class="author">Charlotte Perkins Gilman (1899)</p>
+        <hr>
+        <p>John es médico, y tal vez (no se lo diría a un alma viva, por supuesto, pero esto es papel mojado y un gran alivio para mi mente), tal vez esa sea una de las razones por las que no me pongo bien más rápido. Verá, ¡él no cree que esté enferma!</p>
+        <p>Personalmente no estoy de acuerdo con sus ideas. Personalmente creo que un trabajo agradable, con emoción y cambio, me haría bien. Pero, ¿qué puede hacer uno?</p>
+        <p>No me gusta nada nuestra habitación. Quería una que diera a la plaza y tuviera rosas en la ventana... pero John no quiso ni oírlo.</p>
+        <p>No me importa nada, sólo el papel. Uno de esos patrones extravagantes que cometen todos los pecados artísticos. Es lo suficientemente aburrido como para confundir al ojo al seguirlo, lo suficientemente pronunciado como para irritar constantemente y provocar el estudio...</p>
+        <p>El color es repelente, casi repugnante; un amarillo humeante y sucio, extrañamente descolorido por la luz del sol que cambia lentamente. En algunos lugares es de un naranja apagado pero escabroso, y en otros de un enfermizo tinte sulfúrico.</p>
+        <p>Detrás de ese patrón exterior, las tenues formas se hacen más claras cada día. Es siempre la misma forma, sólo que muy numerosa. Y es como una mujer que se agacha y se arrastra detrás de ese patrón.</p>
+        <p>La mujer de atrás lo agita. En los lugares muy luminosos se queda quieta, y en los lugares muy sombríos se agarra a los barrotes y los sacude con fuerza. Y todo el tiempo trata de trepar. Pero nadie podría trepar por ese patrón, que estrangula tanto.</p>
+        <p>Juan me ha mantenido aquí, después de todo. Puedo soportarlo mucho más fácilmente que un bebé, ya ves. Si no lo hubiéramos usado, ¡ese bendito niño lo habría hecho! ¡Qué afortunada escapada!</p>
+        <p>¡Al fin he salido, a pesar de ti y de Jane! Y he arrancado la mayor parte del papel, ¡así que no puedes devolverme!</p>
+        <p>"¿Qué pasa?, gritó. Por el amor de Dios, ¿qué estás haciendo?" Seguí arrastrándome igual, pero le miré por encima del hombro. "Al fin he salido"... y tuve que arrastrarme sobre él cada vez.</p>
+    </template>
+
+    <template id="text-storni">
+        <h1>Tú me quieres blanca</h1>
+        <p class="author">Alfonsina Storni</p>
+        <hr>
+        <p>Tú me quieres alba,<br>
+        me quieres de espumas,<br>
+        me quieres de nácar.<br>
+        Que sea azucena<br>
+        Sobre todas, casta.<br>
+        De perfume tenue.<br>
+        Corola cerrada.</p>
+        <p>Ni un rayo de luna<br>
+        filtrado me haya.<br>
+        Ni una margarita<br>
+        se diga mi hermana.<br>
+        Tú me quieres nívea,<br>
+        tú me quieres blanca,<br>
+        tú me quieres alba.</p>
+        <p>Tú que hubiste todas<br>
+        las copas a mano,<br>
+        de frutos y mieles<br>
+        los labios morados.<br>
+        Tú que en el banquete<br>
+        cubierto de pámpanos<br>
+        dejaste las carnes<br>
+        festejando a Baco.<br>
+        Tú que en los jardines<br>
+        negros del Engaño<br>
+        vestido de rojo<br>
+        corriste al Estrago.</p>
+        <p>Tú que el esqueleto<br>
+        conservas intacto<br>
+        no sé todavía<br>
+        por cuáles milagros,<br>
+        me pretendes blanca<br>
+        (Dios te lo perdone),<br>
+        me pretendes casta<br>
+        (Dios te lo perdone),<br>
+        ¡me pretendes alba!</p>
+        <p>Huye hacia los bosques,<br>
+        vete a la montaña;<br>
+        límpiate la boca;<br>
+        vive en las cabañas;<br>
+        toca con las manos<br>
+        la tierra mojada;<br>
+        alimenta el cuerpo<br>
+        con raíz amarga;<br>
+        bebe de las rocas;<br>
+        duerme sobre escarcha;<br>
+        renueva tejidos<br>
+        con salitre y agua:</p>
+        <p>Habla con los pájaros<br>
+        y límpiate al alba.<br>
+        Y cuando las carnes<br>
+        te sean tornadas,<br>
+        y cuando hayas puesto<br>
+        en ellas el alma<br>
+        que por las alcobas<br>
+        se quedó enredada,<br>
+        entonces, buen hombre,<br>
+        preténdeme blanca,<br>
+        preténdeme nívea,<br>
+        preténdeme casta.</p>
+    </template>
+</body>
+</html>
