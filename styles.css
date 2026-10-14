@@ -1,5 +1,4 @@
 
-
 * {
     margin: 0;
     padding: 0;
@@ -10,62 +9,74 @@ body, html {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background-color: #8b5a2b;
 }
 
 .habitacion {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-color: #8b5a2b;
+    overflow: hidden;
 }
 
+/* Todas las capas - NO tienen top/left por defecto */
 .capa {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     pointer-events: none;
 }
 
-/* =================== POSICIONES ESPECÍFICAS =================== */
+/* =================== POSICIONES INDIVIDUALES =================== */
 
+/* PARED - cubre TODO el fondo */
 .capa-pared {
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
 }
 
+/* TECHO - solo la parte superior (8% de altura) */
 .capa-techo {
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 8%;
     z-index: 2;
 }
 
+/* SUELO - solo la parte inferior (15% de altura) */
+.capa-suelo {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    z-index: 3;
+}
+
+/* VENTANA con paisaje - posición central */
 .capa-paisaje {
     top: 20%;
     left: 42%;
     width: 16%;
     height: 28%;
-    z-index: 3;
-}
-
-.capa-suelo {
-    bottom: 0;
-    height: 15%;
     z-index: 4;
 }
 
+/* PUERTA - lado derecho */
 .capa-puerta {
     top: 20%;
     right: 0;
-    width: 18%;
+    left: auto;
+    width: 22%;
     height: 60%;
     z-index: 5;
 }
 
+/* CAMA - abajo en el centro */
 .capa-cama {
-    bottom: 10%;
+    bottom: 8%;
     left: 35%;
     width: 30%;
     height: 15%;
@@ -102,7 +113,7 @@ body, html {
 }
 
 .zona-cama {
-    bottom: 10%;
+    bottom: 8%;
     left: 35%;
     width: 30%;
     height: 15%;
