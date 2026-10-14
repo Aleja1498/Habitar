@@ -1,3 +1,5 @@
+/* ========== styles.css - VERSIÓN FINAL CORREGIDA ========== */
+
 :root {
     --yellow-sick: #f0c958;
     --yellow-dark: #d4a02e;
@@ -29,7 +31,6 @@ html, body {
     width: 100vw;
     height: 100vh;
     perspective: 1000px;
-    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .wall {
@@ -40,14 +41,13 @@ html, body {
     transition: all 0.5s ease;
 }
 
-/* Pared frontal */
+/* Pared frontal (pared.png en tu repo) */
 .wall-front {
     width: 100%;
     height: 75%;
     top: 0;
     left: 0;
-    z-index: 2;
-    background-image: url('assets/Pared.png');
+    background-image: url('./assets/Pared.png');
     filter: brightness(0.85) sepia(0.3);
 }
 
@@ -58,11 +58,9 @@ html, body {
     left: 0;
     width: 100%;
     height: 25%;
-    background-image: url('assets/Suelo.png');
+    background-image: url('./assets/Suelo.png');
     background-size: cover;
     background-position: bottom;
-    transform-origin: top;
-    transform: rotateX(60deg);
     z-index: 3;
 }
 
@@ -73,7 +71,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 10%;
-    background-image: url('assets/Techo.png');
+    background-image: url('./assets/Techo.png');
     background-size: cover;
     background-position: center;
     z-index: 4;
@@ -85,9 +83,7 @@ html, body {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    background: radial-gradient(ellipse at center, transparent 0%, var(--shadow-depth) 100%);
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.7) 100%);
     pointer-events: none;
     z-index: 10;
     opacity: 0.4;
@@ -106,21 +102,24 @@ html, body {
     filter: brightness(1.1);
 }
 
+/* CAMA - usa Cama.png */
 .zone-bed {
     bottom: 25%;
     left: 35%;
     width: 30%;
     height: 18%;
+    background-image: url('./assets/Cama.png');
+    background-size: cover;
+    background-position: center;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid transparent;
 }
 
 .zone-bed:hover {
-    border-color: #8b5a2b;
     box-shadow: 0 0 20px rgba(139, 90, 43, 0.5);
+    border: 2px solid #8b5a2b;
 }
 
+/* VENTANA - usa Paisaje.png */
 .zone-window {
     top: 5%;
     left: 42%;
@@ -134,7 +133,7 @@ html, body {
 .zone-window .landscape {
     width: 100%;
     height: 100%;
-    background-image: url('assets/Paisaje.png');
+    background-image: url('./assets/Paisaje.png');
     background-size: cover;
     background-position: center;
     filter: brightness(0.7);
@@ -145,21 +144,46 @@ html, body {
     filter: brightness(1.1);
 }
 
+/* PUERTA - usa puerta.png (minúscula) */
 .zone-door {
     bottom: 25%;
     right: 5%;
     width: 12%;
     height: 50%;
-    background: rgba(107, 68, 35, 0.3);
+    background-image: url('./assets/puerta.png');
+    background-size: cover;
+    background-position: center;
     border: 2px solid #6b4423;
 }
 
 .zone-door:hover {
-    border-color: var(--yellow-dark);
     box-shadow: 0 0 25px rgba(212, 160, 46, 0.6);
+    border-color: #d4a02e;
 }
 
-/* Modal */
+/* Etiqueta flotante */
+.zone-label {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #f5f1e8;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.zone:hover .zone-label {
+    opacity: 1;
+}
+
+/* Modal de lectura */
 .modal {
     position: fixed;
     inset: 0;
@@ -178,6 +202,10 @@ html, body {
     visibility: visible;
 }
 
+.modal.hidden {
+    display: none;
+}
+
 .modal-content {
     max-width: 900px;
     max-height: 85vh;
@@ -189,6 +217,7 @@ html, body {
     position: relative;
     line-height: 1.8;
     font-size: 1.1rem;
+    font-family: var(--font-body);
 }
 
 .close-btn {
@@ -198,6 +227,56 @@ html, body {
     font-size: 2rem;
     background: transparent;
     border: none;
-    color: var(--brown-wood);
+    color: #8b5a2b;
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+    color: #d4a02e;
+}
+
+/* Estilos específicos por autor */
+[data-author="woolf"] .modal-content {
+    background: linear-gradient(to bottom, #e8dcb8, #c4b888);
+    transform: rotate(-1deg);
+}
+
+[data-author="gilman"] .modal-content {
+    background: repeating-linear-gradient(0deg, #f0c958, #f0c958 1px, #e4bd4a 1px, #e4bd4a 20px);
+    font-family: var(--font-mono);
+}
+
+[data-author="storni"] .modal-content {
+    background: linear-gradient(135deg, #e8f4f8, #d4e4e8);
+    text-align: center;
+}
+
+/* Scrollbar personalizado */
+.modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #8b5a2b;
+    border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .zone-bed, .zone-window, .zone-door {
+        width: 20%;
+        height: 15%;
+    }
+    
+    .modal-content {
+        padding: 25px;
+        font-size: 0.95rem;
+        max-width: 95%;
+    }
 }
