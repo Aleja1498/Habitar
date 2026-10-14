@@ -1,8 +1,4 @@
-:root {
-    --font-heading: 'Crimson Text', serif;
-    --font-body: 'Lora', serif;
-    --font-mono: 'Courier Prime', monospace;
-}
+/* ========== styles.css - VERSIÓN FINAL CORRECTA ========== */
 
 * {
     margin: 0;
@@ -10,10 +6,9 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    font-family: var(--font-body);
+body {
+    margin: 0;
+    font-family: 'Lora', serif;
 }
 
 #room {
@@ -24,8 +19,9 @@ html, body {
     overflow: hidden;
 }
 
-
+/* ============================================ */
 /* SUPERFICIES DE LA HABITACIÓN                 */
+/* ============================================ */
 
 .wall-front {
     position: absolute;
@@ -33,7 +29,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 75%;
-    background-image: url('./assets/Pared.png');
+    background-image: url('assets/Pared.png');
     background-size: cover;
     background-position: center;
     z-index: 1;
@@ -45,7 +41,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 25%;
-    background-image: url('./assets/Suelo.png');
+    background-image: url('assets/Suelo.png');
     background-size: cover;
     background-position: center;
     z-index: 2;
@@ -57,7 +53,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 8%;
-    background-image: url('./assets/Techo.png');
+    background-image: url('assets/Techo.png');
     background-size: cover;
     background-position: center;
     z-index: 3;
@@ -69,14 +65,15 @@ html, body {
     right: 0;
     width: 25%;
     height: 67%;
-    background-image: url('./assets/puerta.png');
+    background-image: url('assets/Puerta.png');
     background-size: cover;
     background-position: center;
     z-index: 1;
 }
 
-/* ZONAS INTERACTIVAS */
-
+/* ============================================ */
+/* ZONAS INTERACTIVAS                           */
+/* ============================================ */
 
 .zone {
     position: absolute;
@@ -91,15 +88,16 @@ html, body {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-/* CAMA - sobre la imagen de la cama */
 .zone-bed {
     bottom: 12%;
     left: 35%;
     width: 30%;
     height: 15%;
+    background-image: url('assets/Cama.png');
+    background-size: cover;
+    background-position: center;
 }
 
-/* VENTANA - sobre la ventana visible */
 .zone-window {
     top: 15%;
     left: 42%;
@@ -107,7 +105,14 @@ html, body {
     height: 30%;
 }
 
-/* PUERTA - sobre la puerta visible */
+.zone-window .landscape {
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/Paisaje.png');
+    background-size: cover;
+    background-position: center;
+}
+
 .zone-door {
     top: 20%;
     right: 3%;
@@ -115,31 +120,9 @@ html, body {
     height: 55%;
 }
 
-/* Etiquetas */
-.zone-label {
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: #f5f1e8;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.zone:hover .zone-label {
-    opacity: 1;
-}
-
-
-/* MODAL DE LECTURA                             */
-
+/* ============================================ */
+/* MODAL                                        */
+/* ============================================ */
 
 .modal {
     position: fixed;
@@ -151,7 +134,6 @@ html, body {
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.5s ease;
 }
 
 .modal.active {
@@ -166,8 +148,6 @@ html, body {
     background: #f5f1e8;
     padding: 40px;
     border-radius: 5px;
-    line-height: 1.8;
-    font-size: 1.1rem;
 }
 
 .close-btn {
@@ -177,23 +157,5 @@ html, body {
     font-size: 2rem;
     background: transparent;
     border: none;
-    color: #8b5a2b;
     cursor: pointer;
-}
-
-
-/* RESPONSIVE */
-
-
-@media (max-width: 768px) {
-    .zone-bed, .zone-window, .zone-door {
-        width: 25%;
-        height: 12%;
-    }
-    
-    .modal-content {
-        padding: 25px;
-        font-size: 0.95rem;
-        max-width: 95%;
-    }
 }
