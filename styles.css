@@ -19,28 +19,82 @@ body {
     overflow: hidden;
 }
 
-/* PARED FRONTAL - usa Pared.png */
-.wall-front {
+/* ==================== SUPERFICIES DE LA HABITACIÓN ==================== */
+
+/* Techo (Techo.png) */
+.techo {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 8%;
+    background-image: url('assets/Techo.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+/* Pared frontal (Pared.png) - ocupa todo el fondo */
+.wall-front {
+    position: absolute;
+    top: 8%;
+    left: 0;
+    width: 100%;
+    height: 77%;
     background-image: url('assets/Pared.png');
     background-size: cover;
     background-position: center;
+    z-index: 2;
 }
 
-/* VENTANA - usa Paisaje.png */
-.zone-window {
+/* Suelo (Suelo.png) */
+.suelo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    background-image: url('assets/Suelo.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 3;
+}
+
+/* Puerta lateral (Puerta.png) */
+.puerta-superficie {
     position: absolute;
     top: 15%;
-    left: 42%;
-    width: 16%;
-    height: 30%;
-    border: 4px solid #6b4423;
+    right: 0;
+    width: 22%;
+    height: 70%;
+    background-image: url('assets/Puerta.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
+}
+
+/* ==================== ZONAS INTERACTIVAS (TRANSPARENTES) ==================== */
+
+.zone {
+    position: absolute;
     cursor: pointer;
     z-index: 10;
+    border: 2px solid transparent;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.zone:hover {
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* VENTANA - sobre el paisaje (Paisaje.png) */
+.zone-window {
+    top: 20%;
+    left: 42%;
+    width: 16%;
+    height: 28%;
 }
 
 .zone-window .landscape {
@@ -51,41 +105,27 @@ body {
     background-position: center;
 }
 
-/* PUERTA - usa Puerta.png */
+/* PUERTA - zona interactiva sobre la puerta */
 .zone-door {
-    position: absolute;
-    top: 25%;
-    right: 5%;
-    width: 18%;
-    height: 50%;
-    background-image: url('assets/Puerta.png');
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    z-index: 10;
+    top: 20%;
+    right: 2%;
+    width: 15%;
+    height: 55%;
 }
 
-/* CAMA - usa Cama.png */
+/* CAMA - sobre Cama.png */
 .zone-bed {
-    position: absolute;
-    bottom: 15%;
+    bottom: 10%;
     left: 35%;
     width: 30%;
-    height: 18%;
+    height: 15%;
     background-image: url('assets/Cama.png');
     background-size: cover;
     background-position: center;
-    cursor: pointer;
-    z-index: 10;
 }
 
-/* Hover effects */
-.zone:hover {
-    border: 2px solid white;
-    box-shadow: 0 0 15px rgba(255,255,255,0.5);
-}
+/* ==================== MODAL ==================== */
 
-/* Modal */
 .modal {
     position: fixed;
     inset: 0;
