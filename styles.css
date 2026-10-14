@@ -1,12 +1,4 @@
-/* ========== styles.css - VERSIÓN FINAL CORREGIDA ========== */
-
 :root {
-    --yellow-sick: #f0c958;
-    --yellow-dark: #d4a02e;
-    --brown-wood: #8b5a2b;
-    --dark-metal: #2d2d2d;
-    --cream-white: #f5f1e8;
-    --shadow-depth: rgba(0, 0, 0, 0.7);
     --font-heading: 'Crimson Text', serif;
     --font-body: 'Lora', serif;
     --font-mono: 'Courier Prime', monospace;
@@ -21,37 +13,32 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
     font-family: var(--font-body);
-    background-color: var(--brown-wood);
 }
 
 #room {
     position: relative;
     width: 100vw;
     height: 100vh;
-    perspective: 1000px;
+    background-color: #8b5a2b;
+    overflow: hidden;
 }
 
-.wall {
-    position: absolute;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all 0.5s ease;
-}
 
-/* Pared frontal (pared.png en tu repo) */
+/* SUPERFICIES DE LA HABITACIÓN                 */
+
 .wall-front {
-    width: 100%;
-    height: 75%;
+    position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 75%;
     background-image: url('./assets/Pared.png');
-    filter: brightness(0.85) sepia(0.3);
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
 }
 
-/* Suelo */
 .suelo {
     position: absolute;
     bottom: 0;
@@ -60,122 +47,89 @@ html, body {
     height: 25%;
     background-image: url('./assets/Suelo.png');
     background-size: cover;
-    background-position: bottom;
-    z-index: 3;
+    background-position: center;
+    z-index: 2;
 }
 
-/* Techo */
 .techo {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 10%;
+    height: 8%;
     background-image: url('./assets/Techo.png');
     background-size: cover;
     background-position: center;
-    z-index: 4;
-    filter: brightness(0.7);
+    z-index: 3;
 }
 
-/* Atmósfera claustrofóbica */
-.atmosphere {
+.pared-lateral {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.7) 100%);
-    pointer-events: none;
-    z-index: 10;
-    opacity: 0.4;
-}
-
-/* Zonas interactivas */
-.zone {
-    position: absolute;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    z-index: 20;
-}
-
-.zone:hover {
-    transform: scale(1.02);
-    filter: brightness(1.1);
-}
-
-/* CAMA - usa Cama.png */
-.zone-bed {
-    bottom: 25%;
-    left: 35%;
-    width: 30%;
-    height: 18%;
-    background-image: url('./assets/Cama.png');
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-}
-
-.zone-bed:hover {
-    box-shadow: 0 0 20px rgba(139, 90, 43, 0.5);
-    border: 2px solid #8b5a2b;
-}
-
-/* VENTANA - usa Paisaje.png */
-.zone-window {
-    top: 5%;
-    left: 42%;
-    width: 16%;
-    height: 35%;
-    border: 4px solid #6b4423;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.zone-window .landscape {
-    width: 100%;
-    height: 100%;
-    background-image: url('./assets/Paisaje.png');
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.7);
-    transition: filter 0.4s ease;
-}
-
-.zone-window:hover .landscape {
-    filter: brightness(1.1);
-}
-
-/* PUERTA - usa puerta.png (minúscula) */
-.zone-door {
-    bottom: 25%;
-    right: 5%;
-    width: 12%;
-    height: 50%;
+    top: 8%;
+    right: 0;
+    width: 25%;
+    height: 67%;
     background-image: url('./assets/puerta.png');
     background-size: cover;
     background-position: center;
-    border: 2px solid #6b4423;
+    z-index: 1;
 }
 
-.zone-door:hover {
-    box-shadow: 0 0 25px rgba(212, 160, 46, 0.6);
-    border-color: #d4a02e;
+/* ZONAS INTERACTIVAS */
+
+
+.zone {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
-/* Etiqueta flotante */
+.zone:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* CAMA - sobre la imagen de la cama */
+.zone-bed {
+    bottom: 12%;
+    left: 35%;
+    width: 30%;
+    height: 15%;
+}
+
+/* VENTANA - sobre la ventana visible */
+.zone-window {
+    top: 15%;
+    left: 42%;
+    width: 16%;
+    height: 30%;
+}
+
+/* PUERTA - sobre la puerta visible */
+.zone-door {
+    top: 20%;
+    right: 3%;
+    width: 20%;
+    height: 55%;
+}
+
+/* Etiquetas */
 .zone-label {
     position: absolute;
-    bottom: -30px;
+    bottom: -25px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.8);
     color: #f5f1e8;
-    padding: 5px 15px;
-    border-radius: 5px;
-    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.3s ease;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
@@ -183,7 +137,10 @@ html, body {
     opacity: 1;
 }
 
-/* Modal de lectura */
+
+/* MODAL DE LECTURA                             */
+
+
 .modal {
     position: fixed;
     inset: 0;
@@ -202,22 +159,15 @@ html, body {
     visibility: visible;
 }
 
-.modal.hidden {
-    display: none;
-}
-
 .modal-content {
     max-width: 900px;
     max-height: 85vh;
     overflow-y: auto;
-    background: var(--cream-white);
-    padding: 40px 60px;
+    background: #f5f1e8;
+    padding: 40px;
     border-radius: 5px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    position: relative;
     line-height: 1.8;
     font-size: 1.1rem;
-    font-family: var(--font-body);
 }
 
 .close-btn {
@@ -229,49 +179,16 @@ html, body {
     border: none;
     color: #8b5a2b;
     cursor: pointer;
-    transition: transform 0.3s ease;
 }
 
-.close-btn:hover {
-    transform: rotate(90deg);
-    color: #d4a02e;
-}
 
-/* Estilos específicos por autor */
-[data-author="woolf"] .modal-content {
-    background: linear-gradient(to bottom, #e8dcb8, #c4b888);
-    transform: rotate(-1deg);
-}
+/* RESPONSIVE */
 
-[data-author="gilman"] .modal-content {
-    background: repeating-linear-gradient(0deg, #f0c958, #f0c958 1px, #e4bd4a 1px, #e4bd4a 20px);
-    font-family: var(--font-mono);
-}
 
-[data-author="storni"] .modal-content {
-    background: linear-gradient(135deg, #e8f4f8, #d4e4e8);
-    text-align: center;
-}
-
-/* Scrollbar personalizado */
-.modal-content::-webkit-scrollbar {
-    width: 10px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-    background: #8b5a2b;
-    border-radius: 5px;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
     .zone-bed, .zone-window, .zone-door {
-        width: 20%;
-        height: 15%;
+        width: 25%;
+        height: 12%;
     }
     
     .modal-content {
