@@ -8,30 +8,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Lora&family=Courier+Prime&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Habitación  -->
+    <!-- Habitación -->
     <div id="room">
-        <!-- Superficies  habitación -->
-        <div class="wall wall-front" style="background-image: url('assets/pared-frontal.png');"></div>
-        <div class="wall wall-left" style="background-image: url('assets/pared-lateral.png');"></div>
-        <div class="wall wall-right" style="background-image: url('assets/puerta.png');"></div>
-        <div class="floor" style="background-image: url('assets/suelo.png');"></div>
-        <div class="ceiling" style="background-image: url('assets/techo.png');"></div>
+        <!-- Superficie: Pared frontal -->
+        <div class="wall-front"></div>
         
-        <!-- Zonas interactivas -->
-        <div class="zone zone-bed" data-author="woolf"></div>
+        <!-- Zona 1: Ventana (Storni) -->
         <div class="zone zone-window" data-author="storni">
-            <div class="landscape" style="background-image: url('assets/paisaje.png');"></div>
+            <div class="landscape"></div>
         </div>
+        
+        <!-- Zona 2: Puerta (Gilman) -->
         <div class="zone zone-door" data-author="gilman"></div>
+        
+        <!-- Zona 3: Cama (Woolf) -->
+        <div class="zone zone-bed" data-author="woolf"></div>
     </div>
     
-    <!--  lectura -->
-    <div id="modal" class="modal hidden">
+    <!-- Modal de lectura -->
+    <div id="modal" class="modal">
         <button class="close-btn">×</button>
         <article id="text-content"></article>
     </div>
     
-    <!-- TEXTOS  -->
+    <!-- TEXTO 1: Virginia Woolf -->
     <template id="text-woolf">
         <h1>Sobre estar enferma</h1>
         <p class="author">Virginia Woolf (1926)</p>
@@ -40,13 +40,11 @@
         <p>Novelas, se diría, podrían estar dedicadas a la influenza; poemas épicos, a la fiebre tifoidea; odas, a la neumonía; obras líricas, al dolor de muelas. Mas no. Salvo pocas excepciones, la literatura hace todo cuanto le es posible para sostener que lo que le concierne es el pensamiento; que el cuerpo no es más que una lámina de liso cristal a través del cual el alma mira directa y claramente...</p>
         <p>Todo el día y la noche entera, el cuerpo interviene; se despunta o se afila, se colorea o decolora, se convierte en cera durante la canícula de junio, se fragua hasta convertirse en sebo en la lobreguez de febrero.</p>
         <p>Pero volvamos al enfermo. «Estoy en cama con gripe», dice, y en realidad se queja de que no recibe conmiseración... pero qué nos dice esto de la gran experiencia; de cómo el mundo ha cambiado de forma; de cómo las herramientas de los negocios se han vuelto remotas...</p>
-        <p>Hay, confesémoslo (y la enfermedad es el gran confesionario) una franqueza infantil en la enfermedad; se dicen cosas, se sueltan verdades que la cautelosa respetabilidad de la salud oculta...</p>
         <p>En cuanto guardar cama aparece como una exigencia, dejamos de ser soldados en el ejército de los rectos; nos convertimos en desertores. Ellos marchan a la batalla. Nosotros flotamos con ramas en el arroyo...</p>
-        <p>Solo quienes yacen recostados saben lo que, después de todo, la naturaleza no se esfuerza en ocultar –y que finalmente vencerá; el calor abandonará el mundo; rígidos por la escarcha dejaremos de arrastrar los pies por los campos...</p>
         <p>La enfermedad nos hace reacios a las largas campañas que exige la prosa... con la responsabilidad archivada y la razón en suspenso, se imponen otros gustos, repentinos, inconstantes, intensos...</p>
-        <p>En la enfermedad, las palabras parecen poseer una cualidad mística. Captamos lo que está más allá de su significado superficial...</p>
     </template>
 
+    <!-- TEXTO 2: Charlotte Perkins Gilman -->
     <template id="text-gilman">
         <h1>El papel pintado amarillo</h1>
         <p class="author">Charlotte Perkins Gilman (1899)</p>
@@ -55,14 +53,12 @@
         <p>Personalmente no estoy de acuerdo con sus ideas. Personalmente creo que un trabajo agradable, con emoción y cambio, me haría bien. Pero, ¿qué puede hacer uno?</p>
         <p>No me gusta nada nuestra habitación. Quería una que diera a la plaza y tuviera rosas en la ventana... pero John no quiso ni oírlo.</p>
         <p>No me importa nada, sólo el papel. Uno de esos patrones extravagantes que cometen todos los pecados artísticos. Es lo suficientemente aburrido como para confundir al ojo al seguirlo, lo suficientemente pronunciado como para irritar constantemente y provocar el estudio...</p>
-        <p>El color es repelente, casi repugnante; un amarillo humeante y sucio, extrañamente descolorido por la luz del sol que cambia lentamente. En algunos lugares es de un naranja apagado pero escabroso, y en otros de un enfermizo tinte sulfúrico.</p>
+        <p>El color es repelente, casi repugnante; un amarillo humeante y sucio, extrañamente descolorido por la luz del sol que cambia lentamente...</p>
         <p>Detrás de ese patrón exterior, las tenues formas se hacen más claras cada día. Es siempre la misma forma, sólo que muy numerosa. Y es como una mujer que se agacha y se arrastra detrás de ese patrón.</p>
-        <p>La mujer de atrás lo agita. En los lugares muy luminosos se queda quieta, y en los lugares muy sombríos se agarra a los barrotes y los sacude con fuerza. Y todo el tiempo trata de trepar. Pero nadie podría trepar por ese patrón, que estrangula tanto.</p>
-        <p>Juan me ha mantenido aquí, después de todo. Puedo soportarlo mucho más fácilmente que un bebé, ya ves. Si no lo hubiéramos usado, ¡ese bendito niño lo habría hecho! ¡Qué afortunada escapada!</p>
         <p>¡Al fin he salido, a pesar de ti y de Jane! Y he arrancado la mayor parte del papel, ¡así que no puedes devolverme!</p>
-        <p>"¿Qué pasa?, gritó. Por el amor de Dios, ¿qué estás haciendo?" Seguí arrastrándome igual, pero le miré por encima del hombro. "Al fin he salido"... y tuve que arrastrarme sobre él cada vez.</p>
     </template>
 
+    <!-- TEXTO 3: Alfonsina Storni -->
     <template id="text-storni">
         <h1>Tú me quieres blanca</h1>
         <p class="author">Alfonsina Storni</p>
@@ -88,11 +84,7 @@
         Tú que en el banquete<br>
         cubierto de pámpanos<br>
         dejaste las carnes<br>
-        festejando a Baco.<br>
-        Tú que en los jardines<br>
-        negros del Engaño<br>
-        vestido de rojo<br>
-        corriste al Estrago.</p>
+        festejando a Baco.</p>
         <p>Tú que el esqueleto<br>
         conservas intacto<br>
         no sé todavía<br>
@@ -102,18 +94,6 @@
         me pretendes casta<br>
         (Dios te lo perdone),<br>
         ¡me pretendes alba!</p>
-        <p>Huye hacia los bosques,<br>
-        vete a la montaña;<br>
-        límpiate la boca;<br>
-        vive en las cabañas;<br>
-        toca con las manos<br>
-        la tierra mojada;<br>
-        alimenta el cuerpo<br>
-        con raíz amarga;<br>
-        bebe de las rocas;<br>
-        duerme sobre escarcha;<br>
-        renueva tejidos<br>
-        con salitre y agua:</p>
         <p>Habla con los pájaros<br>
         y límpiate al alba.<br>
         Y cuando las carnes<br>
