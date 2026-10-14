@@ -1,4 +1,4 @@
-/* ========== styles.css - VERSION FINAL CORRECTA ========== */
+
 
 * {
     margin: 0;
@@ -19,7 +19,7 @@ body {
     overflow: hidden;
 }
 
-/* Pared frontal - usa Pared.png (mayúscula) */
+/* PARED FRONTAL - usa Pared.png */
 .wall-front {
     position: absolute;
     top: 0;
@@ -29,7 +29,40 @@ body {
     background-image: url('assets/Pared.png');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+}
+
+/* VENTANA - usa Paisaje.png */
+.zone-window {
+    position: absolute;
+    top: 15%;
+    left: 42%;
+    width: 16%;
+    height: 30%;
+    border: 4px solid #6b4423;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.zone-window .landscape {
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/Paisaje.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* PUERTA - usa Puerta.png */
+.zone-door {
+    position: absolute;
+    top: 25%;
+    right: 5%;
+    width: 18%;
+    height: 50%;
+    background-image: url('assets/Puerta.png');
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    z-index: 10;
 }
 
 /* CAMA - usa Cama.png */
@@ -43,58 +76,28 @@ body {
     background-size: cover;
     background-position: center;
     cursor: pointer;
-    opacity: 0.8;
+    z-index: 10;
 }
 
-/* VENTANA - usa Paisaje.png */
-.zone-window {
-    position: absolute;
-    top: 15%;
-    left: 42%;
-    width: 16%;
-    height: 30%;
-    border: 4px solid #6b4423;
-    cursor: pointer;
-}
-
-.zone-window .landscape {
-    width: 100%;
-    height: 100%;
-    background-image: url('assets/Paisaje.png');
-    background-size: cover;
-    background-position: center;
-}
-
-/* PUERTA - usa Puerta.png (mayúscula) */
-.zone-door {
-    position: absolute;
-    top: 25%;
-    right: 5%;
-    width: 18%;
-    height: 50%;
-    background-image: url('assets/Puerta.png');
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    opacity: 0.8;
+/* Hover effects */
+.zone:hover {
+    border: 2px solid white;
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
 }
 
 /* Modal */
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex;
+    background: rgba(0,0,0,0.9);
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
 }
 
-.modal.active {
-    opacity: 1;
-    visibility: visible;
+.modal.show {
+    display: flex;
 }
 
 .modal-content {
